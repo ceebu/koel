@@ -4,11 +4,11 @@ steps:
     env:
       - FLUTTER_TARGET=lib/main.dart
   - name: 'gcr.io/google-containers/gcloud'
-    args: ['docker', '--', 'build', '-t', 'gcr.io/$PROJECT_ID/myapp', '.']
+    args: ['docker', '--', 'build', '-t', 'gcr.io/ceebu-koel/myapp', '.']
   - name: 'gcr.io/google-containers/gcloud'
-    args: ['run', '--rm', '--quiet', '-t', 'gcr.io/$PROJECT_ID/myapp']
+    args: ['run', '--rm', '--quiet', '-t', 'gcr.io/ceebu-koel/myapp']
   - name: 'gcr.io/google-containers/gcloud'
-    args: ['docker', '--', 'save', 'gcr.io/$PROJECT_ID/myapp', '-o', 'myapp.tar']
+    args: ['docker', '--', 'save', 'gcr.io/ceebu-koel/myapp', '-o', 'myapp.tar']
   - name: 'gcr.io/google-containers/gsutil'
     args: ['cp', 'myapp.tar', 'gs://my-bucket/myapp.tar']
 
