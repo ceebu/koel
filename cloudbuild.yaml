@@ -1,4 +1,3 @@
-```yaml
 steps:
   - name: 'gcr.io/google-containers/gcloud'
     args: ['wrap', 'flutter', 'build', 'apk']
@@ -12,4 +11,4 @@ steps:
     args: ['docker', '--', 'save', 'gcr.io/$PROJECT_ID/myapp', '-o', 'myapp.tar']
   - name: 'gcr.io/google-containers/gsutil'
     args: ['cp', 'myapp.tar', 'gs://my-bucket/myapp.tar']
-```
+
