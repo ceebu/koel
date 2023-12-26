@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/cloudkoel/ceebu-koel', '-f', '.gitpod.dockerfile', '.']
-  - name: 'us.gcr.io/gcp-runtimes/appengine'
+  - name: 'us.gcr.io/gcp-runtimes/appengine/default.integration-1682d1ca4f744312'
     args: ['appcfg', 'update', '--promote', '--version=v1', '--stop_previous_version', 'gcr.io/cloudkoel/ceebu-koel']
 
