@@ -1,14 +1,6 @@
 steps:
-  - name: 'gcr.io/google-containers/gcloud'
-    args: ['wrap', 'flutter', 'build', 'apk']
-    env:
-      - FLUTTER_TARGET=lib/main.dart
-  - name: 'gcr.io/google-containers/gcloud'
-    args: ['docker', '--', 'build', '-t', 'gcr.io/ceebu-koel/myapp', '.']
-  - name: 'gcr.io/google-containers/gcloud'
-    args: ['run', '--rm', '--quiet', '-t', 'gcr.io/ceebu-koel/myapp']
-  - name: 'gcr.io/google-containers/gcloud'
-    args: ['docker', '--', 'save', 'gcr.io/ceebu-koel/myapp', '-o', 'myapp.tar']
-  - name: 'gcr.io/google-containers/gsutil'
-    args: ['cp', 'myapp.tar', 'gs://my-bucket/myapp.tar']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/cloudkoel/ceebu-koel', '-f', '.gitpod.dockerfile', '.']
+  - name: 'gcr.io/google-appengine/exec-sdk'
+    args: ['appcfg', 'update', '--promote', '--version=v1', '--stop_previous_version', 'gcr.io/cloudkoel/ceebu-koel']
 
